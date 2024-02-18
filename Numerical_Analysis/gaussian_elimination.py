@@ -57,7 +57,9 @@ def forward_substitution(mat):
 
             # filling lower triangular matrix with zeros
             mat[i][k] = 0
-
+    for i in range(N):
+        if not round(mat[i][i], 4):
+            return N-1
     return -1
 
 # function to calculate the values of the unknowns
