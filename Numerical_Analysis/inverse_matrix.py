@@ -76,13 +76,14 @@ if __name__ == '__main__':
                   [3, 0, 8]])
     #the solution vector for matrix A
     B = np.array([0, 0, 0])
-
+    """
     print(" Date: \n"
-          " Group: \n"
+          " Group: Daniel Houri , 209445071 \n"
+          "        Yakov Shtefan , 208060111 \n"
+          "        Vladislav Rabinovich , 323602383 \n"
           " Git: https://github.com/EveHackmon/Numerical_Analysis.git \n"
           " Name: Eve Hackmon \n")
-
-
+    """
     try:
         A_inverse = matrix_inverse(A)
         print(bcolors.OKBLUE, "\nInverse of matrix A: \n", A_inverse)
