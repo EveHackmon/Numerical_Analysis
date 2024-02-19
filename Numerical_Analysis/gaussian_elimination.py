@@ -84,7 +84,7 @@ if __name__ == '__main__':
     np.set_printoptions(suppress=True, precision=4)
     A_b = [[1, 2, 3, 4, 5],
            [2, 3, 4, 5, 1],
-           [8, 8, 8, 8, 1],
+           [8, 8, 1, 8, 1],
            [24, 15, 22, 1, 8]]
 
     result = gaussianElimination(A_b)

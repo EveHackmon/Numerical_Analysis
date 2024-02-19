@@ -28,7 +28,7 @@ def matrix_inverse(matrix):
 
     n = matrix.shape[0]
     identity = np.identity(n)
-
+    count = 0
     # Perform row operations to transform the input matrix into the identity matrix
     for i in range(n):
         if matrix[i, i] == 0:
@@ -43,6 +43,7 @@ def matrix_inverse(matrix):
 
         if matrix[i, i] != 1:
             # Scale the current row to make the diagonal element 1
+            count += 1
             scalar = 1 / matrix[i, i]
             elementary_matrix = scalar_multiplication_elementary_matrix(n, i, scalar)
             print(f"elementary matrix to make the diagonal element 1 :\n {elementary_matrix} \n")
@@ -50,30 +51,45 @@ def matrix_inverse(matrix):
             matrix = np.dot(elementary_matrix, matrix)
             print(f"The matrix after elementary operation :\n {matrix}")
             identity = np.dot(elementary_matrix, identity)
-            print(f"current inverse :\n {identity}")
+            #print(f"current inverse :\n {identity}")
             print(bcolors.OKGREEN, "------------------------------------------------------------------------------------------------------------------",  bcolors.ENDC)
 
 
         # Zero out the elements above and below the diagonal
-        for j in range(n):
+        for j in range(i, n):
             if i != j:
+                count += 1
                 scalar = -matrix[j, i]
                 elementary_matrix = row_addition_elementary_matrix(n, j, i, scalar)
                 print(f"elementary matrix for R{j+1} = R{j+1} + ({scalar}R{i+1}):\n {elementary_matrix} \n")
                 matrix = np.dot(elementary_matrix, matrix)
                 print(f"The matrix after elementary operation :\n {matrix}")
                 identity = np.dot(elementary_matrix, identity)
-                print(f"current inverse :\n {identity}")
+                #print(f"current inverse :\n {identity}")
                 print(bcolors.OKGREEN, "------------------------------------------------------------------------------------------------------------------", bcolors.ENDC)
+    for i in range(n-1, -1, -1):
+        for j in range(n-1, -1, -1):
+            if i > j:
+                count += 1
+                scalar = -matrix[j, i]
+                elementary_matrix = row_addition_elementary_matrix(n, j, i, scalar)
+                print(f"elementary matrix for R{j + 1} = R{j + 1} + ({scalar}R{i + 1}):\n {elementary_matrix} \n")
+                matrix = np.dot(elementary_matrix, matrix)
+                print(f"The matrix after elementary operation :\n {matrix}")
+                identity = np.dot(elementary_matrix, identity)
+                # print(f"current inverse :\n {identity}")
+                print(bcolors.OKGREEN,
+                      "------------------------------------------------------------------------------------------------------------------",
+                      bcolors.ENDC)
 
     return identity
 
 if __name__ == '__main__':
     np.set_printoptions(suppress=True, precision=4)
     #the input matrix test text
-    A = np.array([[1, 6, 4],
-                  [5, 0, 9],
-                  [3, 0, 8]])
+    A = np.array([[0, 2, -2],
+                  [5, 0, 19],
+                  [0, 0, 0]])
     #the solution vector for matrix A
     B = np.array([0, 0, 0])
     """
@@ -82,7 +98,8 @@ if __name__ == '__main__':
           "        Yakov Shtefan , 208060111 \n"
           "        Vladislav Rabinovich , 323602383 \n"
           " Git: https://github.com/EveHackmon/Numerical_Analysis.git \n"
-          " Name: Eve Hackmon \n")
+          " Name: Eve Hackmon , 209295914 \n"
+          " Input: \n")
     """
     try:
         A_inverse = matrix_inverse(A)
