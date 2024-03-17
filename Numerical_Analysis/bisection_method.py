@@ -38,7 +38,7 @@ def bisection_method(f, a, b, tol):
     return c
 
 def find_all_roots(f, interval, tol):
-    f1 = lambdify(x,f)
+    f1 = lambdify(x, f)
     a, b = interval
     roots = []
     interval1 = 0.2
@@ -54,7 +54,7 @@ def find_all_roots(f, interval, tol):
             else:
                 for i in roots:
                     if i == root:
-                        flag=0
+                        flag = 0
                         break
                 if flag == -1:
                     roots.append(round(root, 5))
