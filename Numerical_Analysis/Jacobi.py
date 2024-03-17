@@ -49,7 +49,7 @@ def jacobi_iterative(A, b, X0, TOL=1e-16, N=200):
     if not is_diagonally_dominant(A):
         raise ValueError('Matrix is not diagonally dominant - Cant preform jacobi algorithm\n')
 
-    print ('Matrix is  diagonally dominant - preforming jacobi algorithm\n')
+    print('Matrix is  diagonally dominant - preforming jacobi algorithm\n')
     k = 1
     print( "Iteration" + "\t\t\t".join([" {:>12}".format(var) for var in ["x{}".format(i) for i in range(1, len(A) + 1)]]))
     print("-----------------------------------------------------------------------------------------------")
@@ -73,7 +73,6 @@ def jacobi_iterative(A, b, X0, TOL=1e-16, N=200):
 
     print("Maximum number of iterations exceeded")
     return tuple(x)
-
 
 if __name__ == "__main__":
 

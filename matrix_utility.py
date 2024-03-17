@@ -91,7 +91,6 @@ def DominantDiagonalFix(matrix):
 def swap_rows_elementary_matrix(n, row1, row2):
     elementary_matrix = np.identity(n)
     elementary_matrix[[row1, row2]] = elementary_matrix[[row2, row1]]
-
     return np.array(elementary_matrix)
 
 
