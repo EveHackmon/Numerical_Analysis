@@ -8,7 +8,6 @@ def gaussianElimination(mat):
     singular_flag = forward_substitution(mat)
 
     if singular_flag != -1:
-
         if mat[singular_flag][N]:
             return "Singular Matrix (Inconsistent System)"
         else:
@@ -28,7 +27,6 @@ def swap_row(mat, i, j):
 def forward_substitution(mat):
     N = len(mat)
     for k in range(N):
-
         # Partial Pivoting: Find the pivot row with the largest absolute value in the current column
         pivot_row = k
         v_max = mat[pivot_row][k]
