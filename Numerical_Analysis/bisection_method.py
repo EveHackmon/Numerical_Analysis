@@ -58,26 +58,28 @@ def find_all_roots(f, interval, tol):
                         break
                 if flag == -1:
                     roots.append(round(root, 5))
-
         except Exception as e:
             pass
+
         a += interval1
     return roots
 
 if __name__ == '__main__':
     tol = 1e-6
     x = sp.symbols('x')
+
     f = x**5 + 16*x**2 + sin(x)**3
     fTAG = sp.diff(f)
-    print(fTAG)
+
     interval = (-9.25, 9.25)
+
     roots = find_all_roots(f, interval, tol)
     Extreme_Points = find_all_roots(fTAG, interval, tol)
-    print(Extreme_Points)
+
     f = lambdify(x, f)
     moroots = []
     for i in Extreme_Points:
-        if f(i) <= 0+tol and f(i) >= 0-tol:
+        if 0+tol >= f(i) >= 0-tol:
             moroots.append(round(i, 5))
     print("Intersection points from double multiplication", interval, "are:", roots)
     print("Intersection points from odd multiples are:", moroots)
