@@ -1,5 +1,6 @@
 import numpy as np
 from numpy.linalg import norm, inv
+import bisection_method
 from colors import bcolors
 
 def gaussianElimination(mat):
@@ -80,16 +81,26 @@ def backward_substitution(mat):
 
 if __name__ == '__main__':
     np.set_printoptions(suppress=True, precision=4)
-    A_b = [[1, 2, 3, 4, 5],
-           [2, 3, 4, 5, 1],
-           [8, 8, 1, 8, 1],
-           [24, 15, 22, 1, 8]]
-
+    A_b =  [[2, 3, 4, 5, 6, 70],
+            [-5, 3, 4, -2, 3, 20],
+            [4, -5, -2, 2, 6, 26],
+            [4, 5, -1, -2, -3, -12],
+            [5, 5, 3, -3, 5, 37]]
+    print(" Date: 18/03/24 \n"
+          " Group: Daniel Houri , 209445071 \n"
+          "        Yakov Shtefan , 208060111 \n"
+          "        Vladislav Rabinovich , 323602383 \n"
+          " Git: https://github.com/EveHackmon/Numerical_Analysis.git \n"
+          " Name: Eve Hackmon , 209295914 \n"
+          " Input: \n")
+    print(np.array(A_b) , "\n")
     result = gaussianElimination(A_b)
-    print(np.array(A_b))
+    print("output:")
+
     if isinstance(result, str):
         print(result)
     else:
         print(bcolors.OKBLUE,"\nSolution for the system:")
         for x in result:
             print("{:.6f}".format(x))
+
