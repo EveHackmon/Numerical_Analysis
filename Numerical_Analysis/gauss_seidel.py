@@ -26,9 +26,9 @@ def gauss_seidel(A, b, X0, TOL=1e-16, N=300):
         # End Partial Pivoting
 
     if not is_diagonally_dominant(A):
-        print('Matrix is not diagonally dominant - cant preform gauss seidel algorithm\n')
-
-    print('Matrix is diagonally dominant - preforming gauss seidel algorithm\n')
+        print('Matrix is NOT diagonally dominant - preforming gauss seidel algorithm\n')
+    else:
+        print('Matrix is diagonally dominant - preforming gauss seidel algorithm\n')
     k = 1
     print( "Iteration" + "\t\t\t".join([" {:>12}".format(var) for var in ["x{}".format(i) for i in range(1, len(A) + 1)]]))
     print("-----------------------------------------------------------------------------------------------")
