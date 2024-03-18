@@ -47,7 +47,7 @@ def jacobi_iterative(A, b, X0, TOL=1e-16, N=200):
             swap_rows(A, k, pivot_row)
         # End Partial Pivoting
     if not is_diagonally_dominant(A):
-        raise ValueError('Matrix is not diagonally dominant - Cant preform jacobi algorithm\n')
+        print('Matrix is not diagonally dominant - Cant preform jacobi algorithm\n')
 
     print('Matrix is  diagonally dominant - preforming jacobi algorithm\n')
     k = 1
