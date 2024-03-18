@@ -34,7 +34,7 @@ def bisection_method(f, a, b, tol):
         else:
             b = c
         k += 1
-    if f(c) > tol:
+    if f(c) > tol :
         raise Exception("The scalars a and b do not bound a root")
     return c
 

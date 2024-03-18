@@ -90,6 +90,7 @@ if __name__ == '__main__':
           " Group: Daniel Houri , 209445071 \n"
           "        Yakov Shtefan , 208060111 \n"
           "        Vladislav Rabinovich , 323602383 \n"
+          "        Aaron Hajaj , 311338198 \n"
           " Git: https://github.com/EveHackmon/Numerical_Analysis.git \n"
           " Name: Eve Hackmon , 209295914 \n"
           " Input: \n")
