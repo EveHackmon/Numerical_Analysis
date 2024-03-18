@@ -89,6 +89,13 @@ if __name__ == '__main__':
     for i in Extreme_Points:
         if 0+tol >= f1(i) >= 0-tol:
             moroots.append(round(i, 5))
+
+    for i in moroots:
+        try:
+            x = f(i)
+        except:
+            roots.remove(i)
+            
     print("Intersection points from double multiplication", interval, "are:", roots)
     print("Intersection points from odd multiples are:", moroots)
 
