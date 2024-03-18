@@ -81,11 +81,12 @@ def backward_substitution(mat):
 
 if __name__ == '__main__':
     np.set_printoptions(suppress=True, precision=4)
-    A_b =  [[2, 3, 4, 5, 6, 70],
-            [-5, 3, 4, -2, 3, 20],
-            [4, -5, -2, 2, 6, 26],
-            [4, 5, -1, -2, -3, -12],
-            [5, 5, 3, -3, 5, 37]]
+    A_b =  [[2, 3, 4, 5, 6, 92],
+            [-5, 3, 4, -2, 3, 22],
+            [4, -5, -2, 2, 6, 42],
+            [4, 5, -1, -2, -3, -22],
+            [5, 5, 3, -3, 5, 41]]
+
     print(" Date: 18/03/24 \n"
           " Group: Daniel Houri , 209445071 \n"
           "        Yakov Shtefan , 208060111 \n"
