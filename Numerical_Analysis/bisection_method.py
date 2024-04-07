@@ -17,13 +17,14 @@ def find_derivative(expression):
 def bisection_method(f, a, b, tol):
     if np.sign(f(a)) == np.sign(f(b)):
         raise Exception("The scalars a and b do not bound a root")
-
+    if abs(f(b) - f(a)) > 1:
+        raise Exception("The scalars a and b do not bound a root")
     c, k = 0, 0
     steps = max_steps(a, b, tol)
 
     while abs(b - a) > tol and k < steps:
         c = a + (b - a) / 2
-        if f(c) == 0:
+        if 0-tol <= f(c) <= 0 +tol:
             return c
         if f(a) == 0:
             return a
@@ -35,12 +36,11 @@ def bisection_method(f, a, b, tol):
             b = c
         k += 1
 
-    if f(c) > tol :
-        raise Exception("The scalars a and b do not bound a root")
+    """if f(c) > tol :
+        raise Exception("The scalars a and b do not bound a root")"""
     return c
 
-def find_all_roots(f, interval, tol):
-    f1 = lambdify(x, f)
+def find_all_roots(f1, interval, tol):
     a, b = interval
     roots = []
     interval1 = (b - a)/10
@@ -69,33 +69,37 @@ def find_all_roots(f, interval, tol):
 if __name__ == '__main__':
     tol = 1e-6
     x = sp.symbols('x')
-
-    f = (1*x**2 - 7*x + 3) / 6*x
+    f = (1*x**2 - 7*x + 3) / (6*x)
+    f1 = lambdify(x, f)
     fTAG = sp.diff(f)
 
     interval = (0, 3)
 
-    roots = find_all_roots(f, interval, tol)
+    roots = find_all_roots(f1, interval, tol)
     Extreme_Points = find_all_roots(fTAG, interval, tol)
+    print("roots: ", roots)
 
-    f1 = lambdify(x, f)
-    for i in roots:
+    """for i in roots:
         try:
-            x = f(i)
+            if f(i) == 0:
+                continue
         except:
-            roots.remove(i)
+            roots.remove(i)"""
 
-    moroots = []
+    moRoots = []
     for i in Extreme_Points:
         if 0+tol >= f1(i) >= 0-tol:
-            moroots.append(round(i, 5))
+            moRoots.append(i)
 
-    for i in moroots:
+    for i in moRoots:
         try:
             x = f(i)
         except:
-            roots.remove(i)
-            
+            moRoots.remove(i)
+
+    print("moRoots: " , moRoots)
+
+
     print("Intersection points from double multiplication", interval, "are:", roots)
-    print("Intersection points from odd multiples are:", moroots)
+    print("Intersection points from odd multiples are:", moRoots)
 
