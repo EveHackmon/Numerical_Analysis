@@ -37,10 +37,10 @@ def simpsons_rule(f, a, b, n):
     return integral
 
 if __name__ == '__main__':
-    f = lambda x: math.e ** (x ** 2)
+    f = lambda x: (6*x**2 - math.cos(x**4 - x + 2)) / (x**2 + x + 2)
     n = 10
-    a = 0
-    b = 1
+    a = 2.1
+    b = 2.6
 
     print( f" Division into n={n} sections ")
     integral = simpsons_rule(f, 0, 1, n)

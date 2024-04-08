@@ -1,5 +1,6 @@
 import numpy as np
 from colors import bcolors
+import math
 
 def romberg_integration(func, a, b, n):
     """
@@ -34,14 +35,21 @@ def romberg_integration(func, a, b, n):
     return R[n - 1, n - 1]
 
 def f(x):
-    return 1/(2+x ** 4)
+    return (6*x**2 - math.cos(x**4 - x + 2)) / (x**2 + x + 2)
 
 if __name__ == '__main__':
 
-    a = 0
-    b = 1
-    n = 5
-    integral = romberg_integration(f, a, b, n)
+    a = 2.1
+    b = 2.6
+    n = 1
+    integral1 = romberg_integration(f, a, b, n)
+    integral2 = romberg_integration(f, a, b, n+1)
+    print(n, '-', integral2)
+    while round(integral1, 5) != round(integral2 , 5):
+        n += 1
+        integral1 = romberg_integration(f, a, b, n)
+        integral2 = romberg_integration(f, a, b, n + 1)
+        print(n, '-' , integral2)
 
     print(f" Division into n={n} sections ")
-    print(bcolors.OKBLUE, f"Approximate integral in range [{a},{b}] is {integral}", bcolors.ENDC)
+    print(bcolors.OKBLUE, f"Approximate integral in range [{a},{b}] is {round(integral1,5)}", bcolors.ENDC)
